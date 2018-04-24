@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="HibernateEntities.ModeratorsEntity" table="moderators" schema="anketa">
+        <id name="modId">
+            <column name="mod_id" sql-type="int(11)"/>
+        </id>
+        <property name="modFamily">
+            <column name="mod_family" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="modFirstName">
+            <column name="mod_first_name" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="modSecName">
+            <column name="mod_sec_name" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="modPassword">
+            <column name="mod_password" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="modBirthdate">
+        <column name="mod_birthdate" sql-type="varchar(255)" not-null="false"/>
+    </property>
+        <property name="modEmail">
+            <column name="mod_email" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="modHometown">
+            <column name="mod_hometown" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="modPhone">
+            <column name="mod_phone" sql-type="varchar(255)" not-null="false"/>
+        </property>
+        <property name="modFirstIn">
+            <column name="first_in" sql-type="int(5)" not-null="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

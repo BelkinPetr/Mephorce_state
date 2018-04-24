@@ -1,0 +1,483 @@
+html {
+    position: relative;
+    min-height: 100%;
+    font-family: 'Roboto', sans-serif;
+    max-width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+}
+body {
+    margin-bottom: 60px;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-size: 14px;
+    height: 100%;
+}
+
+.cf {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 100px;
+}
+
+.cf h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.navbar {
+    border-bottom: 1px solid #063971;
+    background-color: #eceeef;
+    padding-bottom: 5px;
+
+}
+
+.navbar-fixed-top a {
+    font-size: 16px;
+}
+
+.nav-link {
+    line-height: 29px;
+}
+
+.navbar-fixed-top a.navbar-brand {
+    font-size: 20px;
+    color: #063971;
+}
+
+.navbar-brand{
+    color: #063971;
+}
+
+.nav-masthead{
+    float: right;
+
+}
+
+.nav-masthead a{
+    color: #063971;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 25px;
+    background-color: #f5f5f5;
+    text-align: center;
+    font-size: 14px;
+}
+
+body > .container {
+    padding: 0px 15px 0;
+}
+
+.container .text-muted {
+    margin: 0px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0 20px 0 50px;
+    outline: none;
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.personal-page-block {
+    width: 400px;
+    padding: 20px;
+    font-size: 16px;
+    background: #ffffff;
+    border: 1px solid #063971;
+    border-radius: 5px;
+    border-top: 5px solid #063971;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.personal-page-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.info-block {
+    width: 500px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #063971;
+    border-radius: 5px;
+    border-top: 5px solid #063971;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.info-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.info-block h2 {
+    text-align: center;
+    color: #000;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #063971;
+}
+
+.login-block form select {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0 20px 0 50px;
+    outline: none;
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.login-block form select option {
+    align-items: center;
+    color: #111;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    width: auto;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #063971;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #063971;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.login-block button:hover {
+    background: #063971;
+}
+
+.login-block {
+    width: 400px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #063971;
+    border-radius: 5px;
+    border-top: 5px solid #063971;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.projects-block {
+    /*width: 300px; */
+    padding: 20px;
+    background: #ffffff;
+    /*border: 1px solid #063971;
+    border-radius: 5px;
+    border-top: 5px solid #063971; */
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.projects-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.projects-block table {
+    border-collapse: separate;
+    border-spacing: 50px 0;
+}
+
+.projects-block table td {
+    padding: 10px 0;
+}
+
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+    color: #333;
+    text-shadow: none; /* Prevent inheritance from `body` */
+    background-color: #fff;
+    border: .05rem solid #fff;
+}
+
+@media (max-width: 767px) {
+
+    .nav-masthead {
+        float: none;
+    }
+
+    .login-block {
+        width: 100%;
+        padding: 20px;
+        background: #ffffff;
+        border: 1px solid #063971;
+        border-radius: 5px;
+        border-top: 5px solid #063971;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+
+    .nav-link {
+        margin-top: 10px;
+    }
+
+    .login-block form select {
+        width: 100%;
+        height: 42px;
+        box-sizing: border-box;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        padding: 0 20px 0 50px;
+        outline: none;
+        background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+        background-size: 16px 80px;
+    }
+}
+
+.header h1 {
+    color: darkblue !important;
+    font-size: 120%;
+    letter-spacing: 1px;
+}
+
+.shadow {
+    box-shadow: 3px 3px 8px #636c72;
+    border-radius: 10px;
+    margin: 0px 10px;
+    font-size: 150%;
+}
+
+.table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    border-collapse: collapse;
+    text-align: center;
+
+}
+
+th, td {
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    border-color: white;
+}
+
+th {
+    color: midnightblue;
+    background: lightblue;
+}
+
+td {
+    background: #D8E6F3;
+}
+#wrap{
+    display: none;
+    opacity: 0.8;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+    background-color: rgba(1, 1, 1, 0.725);
+    z-index: 100;
+    overflow: auto;
+}
+#window{
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+    display: none;
+    background: #fff;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 16px;
+}
+.close{
+    margin-left: 364px;
+    cursor: pointer;
+}
+
+.project-table {
+    width: 100%;
+}
+
+.user-info-and-menu {
+    padding-left: 0%;
+    font-size: 16px;
+}
+.sidebar-header alert alert-info{
+    background: #063971;
+    width:100%;
+    margin-bottom: 20px;
+    padding: 10px;
+
+}
+.navmenu {
+    width: 200px;
+}
+.create-project-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0 20px 0 50px;
+    outline: none;
+    background: #fff;
+    background-size: 16px 80px;
+}
+.create-project-block input#password {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.create-project-block input:active, .login-block input:focus {
+    border: 1px solid #063971;
+}
+
+.create-project-block form select {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0 20px 0 50px;
+    outline: none;
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.create-project-block form select option {
+    align-items: center;
+    color: #111;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    width: auto;
+}
+
+.create-project-block button {
+    width: 100%;
+    height: 40px;
+    background: #063971;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #063971;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+.create-project-block button:hover {
+    background: #063971;
+}
+
+.create-project-block {
+    width: 400px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #063971;
+    border-radius: 5px;
+    border-top: 5px solid #063971;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 40px;
+}
+
+.create-project-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.create-project-block {
+    width: 560px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #063971;
+    border-radius: 5px;
+    border-top: 5px solid #063971;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+.create-project-block textarea{
+    width:100% ;
+}

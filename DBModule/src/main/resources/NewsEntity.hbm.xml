@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="HibernateEntities.NewsEntity" table="community_news" schema="anketa">
+        <id name="newsId">
+            <column name="news_id" sql-type="int(11)" not-null="true"/>
+        </id>
+        <property name="creator">
+            <column name="creator" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="date">
+            <column name="date" sql-type="timestamp" not-null="true"/>
+        </property>
+        <property name="project">
+            <column name="project" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="text">
+            <column name="text" sql-type="varchar(1000)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

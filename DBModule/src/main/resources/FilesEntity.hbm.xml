@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="HibernateEntities.FilesEntity" table="files" schema="anketa">
+        <id name="idfiles">
+            <column name="idfiles" sql-type="int(11)"/>
+        </id>
+        <property name="file_name">
+            <column name="file_name" sql-type="varchar(255)" length="255" not-null="true"/>
+        </property>
+        <property name="file_path">
+            <column name="file_path" sql-type="varchar(255)" length="255" not-null="true"/>
+        </property>
+        <property name="clId">
+            <column name="client_id" sql-type="int(11)" length="11" not-null="true"/>
+        </property>
+        <property name="modId">
+            <column name="mod_id" sql-type="int(11)" length="11" not-null="true"/>
+        </property>
+        <property name="stId">
+            <column name="st_id" sql-type="int(11)" length="11" not-null="true"/>
+        </property>
+        <property name="prId">
+            <column name="pr_id" sql-type="int(11)" length="11" not-null="true"/>
+        </property>
+
+    </class>
+</hibernate-mapping>

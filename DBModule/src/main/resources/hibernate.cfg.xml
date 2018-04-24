@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+      <property name="connection.url">jdbc:mysql://localhost:3306/anketa</property>
+      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+      <property name="connection.username">root</property>
+      <property name="connection.password">qwer1234</property>
+      <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+      <property name="hibernate.connection.characterEncoding">UTF-8</property>
+
+      <!--<mapping resource="ClientsEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.SemantictasksEntity"/>
+      <mapping class="HibernateEntities.ClientsEntity"/>
+      <mapping class="HibernateEntities.GroupsEntity"/>
+      <!--<<mapping resource="GroupsEntity.hbm.xml"/>- -->
+      <mapping class="HibernateEntities.ModeratorsEntity"/>
+      <mapping resource="ModeratorsEntity.hbm.xml"/>
+      <mapping class="HibernateEntities.PhotosEntity"/>
+      <mapping resource="PhotosEntity.hbm.xml"/>
+      <mapping resource="ProjectsEntity.hbm.xml"/>
+      <mapping class="HibernateEntities.ProjectsEntity"/>
+      <mapping class="HibernateEntities.StPrEntity"/>
+      <!--<mapping resource="StPrEntity.hbm.xml"/>-->
+      <!--<mapping resource="StudentsEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.StudentsEntity"/>
+      <!--<mapping resource="UsersEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.UsersEntity"/>
+      <!--<mapping resource="Project_mod_skillEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.ProjectStaffSkillEntity"/>
+      <!--<mapping resource="Project_skil_catEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.ProjectSkillCatEntity"/>
+      <!--<mapping resource="Skil_catEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.SkillCatEntity"/>
+      <mapping resource="Skil_listEntity.hbm.xml"/>
+      <mapping class="HibernateEntities.SkillListEntity"/>
+      <mapping class="HibernateEntities.MatchSkilEntity"/>
+      <!--<mapping resource="Skil_matchEntity.hbm.xml"/>-->
+      <mapping class="HibernateEntities.StudentListSkills"/>
+      <mapping class="HibernateEntities.StudentsRating"/>
+      <mapping class="HibernateEntities.TaskRating"/>
+      <mapping class="HibernateEntities.StudentRateLogEntity"/>
+      <!--<mapping resource="StudentListSkills.hbm.xml"/>-->
+      <mapping class="HibernateEntities.ModeratorListSkills"/>
+      <!--<mapping resource="ModerListSkills.hbm.xml"/>-->
+      <mapping class="HibernateEntities.InvitationEntity"/>
+      <mapping resource="InvitationEntity.xml"/>
+      <mapping resource="FilesEntity.hbm.xml"/>
+      <mapping class="HibernateEntities.FilesEntity"/>
+      <mapping class="HibernateEntities.TasksEntity"/>
+      <mapping class="HibernateEntities.NewsEntity"/>
+      <mapping class="HibernateEntities.translation.WordTranslationEntity"/>
+      <mapping class="HibernateEntities.translation.VocabularyWordEntity"/>
+      <mapping class="HibernateEntities.translation.TranslationTextEntity"/>
+      <mapping class="HibernateEntities.translation.ModeratorCommentEntity"/>
+      <mapping class="HibernateEntities.translation.TranslationTopicEntity"/>
+      <mapping class="HibernateEntities.translation.StandardsEntity"/>
+      <mapping class="HibernateEntities.translation.WordDescriptionEntity"/>
+      <mapping class="HibernateEntities.CommentEntity"/>
+      <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+      <mapping resource="InvitationEntityClient.xml"/>
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

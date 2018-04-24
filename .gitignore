@@ -1,0 +1,12 @@
+.idea
+AuthModule/target/
+DBModule/target/
+test
+/mephorce.iml
+/AuthModule/AuthModule.iml
+/DBModule/DBModule.iml
+/.idea/
+/multiuser-text-editor/mvnw.cmd
+/multiuser-text-editor/.gitignore
+/multiuser-text-editor/mvnw
+/multiuser-text-editor/.mvn/
