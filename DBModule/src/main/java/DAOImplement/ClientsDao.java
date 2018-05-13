@@ -58,9 +58,17 @@ public class ClientsDao implements ClientsDAOInterface{
         session.close();
     }
 
+  /*  public static List<ProjectsEntity> getClientProject(ClientsEntity client) {
+        Session session = getSession();
+        Query query = session.createQuery("FROM ProjectsEntity pe JOIN ModeratorsEntity me on pe.mdId=me.modId Where pe.clId = :clientId");
+        query.setParameter("clientId", client.getClientId());
+        List<ProjectsEntity> res = query.list();
+        session.close();
+        return res;
+    }*/
     public static List<ProjectsEntity> getClientProject(ClientsEntity client) {
         Session session = getSession();
-        Query query = session.createQuery("FROM ProjectsEntity Where clId = :clientId");
+        Query query = session.createQuery("FROM ProjectsEntity  Where clId = :clientId");
         query.setParameter("clientId", client.getClientId());
         List<ProjectsEntity> res = query.list();
         session.close();

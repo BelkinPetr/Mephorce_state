@@ -25,12 +25,20 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">MePhorce</a>
+        <a class="navbar-brand" href="/">MePhorce</a>
         <nav class="nav nav-masthead">
-            <a class="nav-link" href="/">Войти</a>
-            <a class="nav-link" href="/aboutUs">О проекте</a>
-            <a class="nav-link" href="/registrate">Создать аккаунт</a>
-            <a class="nav-link" href="/contacts">Контакты</a>
+            <a class="nav-link" href="/PPersCabinClient"><span class="glyphicon glyphicon-user"> Профиль </span> </a>
+            <a class="nav-link" href="/aboutUs"><span class="glyphicon glyphicon-info-sign"> О проекте</span> </a>
+            <!--  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Создать аккаунт</a>
+                  <ul class="dropdown-menu inverse">
+                      <li><a href="regStudent">Исполнитель</a></li>
+                      <li><a href="regAdmin">Администратор</a></li>
+                      <li><a href="regClient">Заказчик</a></li>
+                  </ul>
+              </li>-->
+            <a class="nav-link" href="/contacts"><span class="glyphicon glyphicon-comment"> Контакты</span></a>
+            <a class="nav-link active" href="/"><span class="glyphicon glyphicon-log-out"> ${Client.clFamily} </span></a>
         </nav>
     </div>
 </nav>

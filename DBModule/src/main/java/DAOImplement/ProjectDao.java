@@ -71,6 +71,13 @@ public class ProjectDao {
         session.close();
         return moderatorsEntity;
     }
+    /*public  static ModeratorsEntity getInfoAboutModeratorinProject(Integer modId,ProjectsEntity prId){
+        Session session = getSession();
+        ModeratorsEntity moderatorsEntity = (ModeratorsEntity) session.createQuery("from ModeratorsEntity where modId = :modId")
+                .setParameter("modId", modId).uniqueResult();
+        session.close();
+        return moderatorsEntity;
+    }*/
 
     public static ModeratorsEntity getAdminByName(String adminName){
         Session session = getSession();

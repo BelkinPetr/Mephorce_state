@@ -107,6 +107,7 @@ public class ProjectMovController {
         }
     }
 
+
     @RequestMapping(value = "/loadModer", method = RequestMethod.GET)
     @ResponseBody
     public ModeratorsEntity loadModer(@RequestParam(value = "moderName", required = true) String moderName, @RequestParam(value="moderId",required = true) Integer modId) throws IllegalStateException {
@@ -143,6 +144,7 @@ public class ProjectMovController {
     @RequestMapping(value = "/PClientInvitation")
     public ModelAndView goToInvitation(@ModelAttribute ClientsEntity client, @RequestParam String prId) {
         int projId = Integer.parseInt(prId);
+        ProjectsEntity project = getProjectById(projId);
      //   List<ModeratorsEntity> blackList = AdminDao.getList(projId, -1);
         List<ModeratorsEntity> denyList = ProjectDao.getList(projId, 0);
         List<ModeratorsEntity> acceptList = ProjectDao.getList(projId, 1);
@@ -171,6 +173,7 @@ public class ProjectMovController {
     }
     @RequestMapping(value = "/inviteAdminClient")
     public ModelAndView inviteModerator(@RequestParam String modId, @RequestParam String prId) {
+
         saveInvite(Integer.parseInt(prId), Integer.parseInt(modId), 2);
         ProjectsEntity project=getProjectById(Integer.valueOf(prId));
         project.setStatus("на рассмотрении");

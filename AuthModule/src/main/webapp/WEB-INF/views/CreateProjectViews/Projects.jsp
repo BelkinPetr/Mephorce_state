@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kinetik
@@ -9,24 +10,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
     <title>Редактирование проекта</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <style type="text/css">
-        <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/cssforpr.css" %>
+        <%@include file="/WEB-INF/css/bootstrap-4.0.0-alpha.6-dist/css/cssforpr.css" %>
         <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" %>
-        <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/table-style.css" %>
+        <%@include file="/WEB-INF/css/zabuto_calendar.min.css" %>
     </style>
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" >
-        <%@include file="/WEB-INF/js/Selection.js" %>
+    <script src="../../js/vendor/jquery-3.2.1.min.js">
     </script>
+    <script src="../../js/vendor/jquery.maskedinput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ru.js"></script>
+    <script src="WEB-INF/js/vendor/zabuto_calendar.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -42,15 +38,15 @@
 </nav>
 
 <div class="container">
-    <div class="login-block">
+    <div class="create-project-block">
         <h1> Редактирование проекта </h1>
          </br>
         </br>
         <form:form  name="form1" action="/addInformProjectNew?prId=${Project.prId}" method="post" modelAttribute="addInfo">
             <form:input path="cltitle" id="here" type="text" value="${Project.title}" placeholder="${Project.title}"/><br/>
-            <form:textarea path="cldescription" id="description"  value="${Project.description}" placeholder="${Project.description}" /> <br/>
-            <form:input path="cldateOfCreation" type="text" value="${Project.dateOfCreation}" placeholder="${Project.dateOfCreation}"/>  <br/>
-            <form:input path="cldateOfReady" type="text" value="${Project.dateOfReady}" placeholder="${Project.dateOfReady}"/>   <br/>
+            <form:input path="cldescription" type="text" value="${Project.description}" /> <br/>
+            <form:input path="cldateOfCreation" type="date" name="calendar" value="${Project.dateOfCreation}" placeholder="${Project.dateOfCreation}"/>  <br/>
+            <form:input path="cldateOfReady" type="date" name="calendar" value="${Project.dateOfReady}" placeholder="${Project.dateOfReady}"/>   <br/>
             <form:input path="clstatus" type="text" value="${Project.status}" placeholder="${Project.status}"/>   <br/>
             <form:input path="clsum" type="text" value="${Project.sum}" placeholder="${Project.sum}"/>   <br/>
             <br/>

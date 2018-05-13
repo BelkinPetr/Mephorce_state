@@ -5,9 +5,6 @@ import com.sun.istack.internal.NotNull;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by Veronika on 27.02.17.
- */
 @Entity
 @Table(name = "projects", schema = "anketa", catalog = "")
 public class ProjectsEntity {
@@ -17,16 +14,19 @@ public class ProjectsEntity {
     private Date dateOfCreation;
     private String status;
     private Date dateOfReady;
-    private Integer sum;
+    private String sum;
     private String jsondata;
     private Integer clId;
+
+
     private Integer mdId;
+
     private Integer moneyDivision;
     private Integer personNumber;
     private String worktypes;
 
-    @Basic
-    @Column(name = "client_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
     public Integer getClId() {
         return clId;
     }
@@ -35,9 +35,8 @@ public class ProjectsEntity {
         this.clId = clId;
     }
 
-    @Basic
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "mod_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "mod_id")
     public Integer getMdId() {
         return mdId;
     }
@@ -106,11 +105,11 @@ public class ProjectsEntity {
 
     @Basic
     @Column(name = "sum", nullable = true)
-    public Integer getSum() {
+    public String getSum() {
         return sum;
     }
 
-    public void setSum(Integer sum) {
+    public void setSum(String sum) {
         this.sum = sum;
     }
 

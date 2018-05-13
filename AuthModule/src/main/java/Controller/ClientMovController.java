@@ -33,6 +33,7 @@ import static DAOImplement.FileDao.createNewPhoto;
 import static DAOImplement.FileDao.getPhotoList;
 import static DAOImplement.FileDao.getPhotoListforClient;
 import static DAOImplement.ProjectDao.getAdminById;
+import static DAOImplement.ProjectDao.getProjectById;
 
 /**
  * Created by kinetik on 05.03.17.
@@ -76,7 +77,6 @@ public class ClientMovController {
          // ProjectsEntity project = (ProjectsEntity) getClientProject(client);
           //Integer modId=project.getMdId();
             clientPersCabinet.addObject("projectList", getClientProject(client));
-         // clientPersCabinet.addObject("moderator",getAdminById(modId));
             return clientPersCabinet;
         } catch (Exception ex) {
             return new ModelAndView("otherViews/errorView");
@@ -134,6 +134,21 @@ public class ClientMovController {
         }
     }
     private static final org.slf4j.Logger logger2 = LoggerFactory.getLogger(AdminMovController.class);
+    @RequestMapping(value = "/goToProjectInfo")
+    public ModelAndView projectInfo(@ModelAttribute("Client") ClientsEntity client,@RequestParam String prId) {
+        try {
+            ModelAndView projectInfo = new ModelAndView("CreateProjectViews/ProjectInfo");
+            ProjectsEntity project = getProjectById(Integer.parseInt(prId));
+            ModeratorsEntity moderator = getAdminById(project.getMdId());
+            projectInfo.addObject("Project",project);
+            projectInfo.addObject("Moder",moderator);
+            return projectInfo;
+        } catch (Exception ex) {
+            logger.error(ex.getStackTrace());
+            return new ModelAndView("otherViews/errorView");
+        }
+    }
+
 
     @RequestMapping(value = "/uploadPhotoforClient", method = RequestMethod.POST)
     @ResponseBody

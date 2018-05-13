@@ -14,7 +14,7 @@ public class AddProject {
     private String clstatus;
     private Date cldateOfReady;
     private Date cldateOfCreation;
-    private int clsum;
+    private String clsum;
     private String jsondata;
     private Integer clclId;
     private Integer clmdId;
@@ -87,11 +87,11 @@ public class AddProject {
         this.cldateOfReady = cldateOfReady;
     }
 
-    public Integer getClsum() {
+    public String getClsum() {
         return clsum;
     }
 
-    public void setClsum(Integer clsum) {
+    public void setClsum(String clsum) {
         this.clsum = clsum;
     }
 

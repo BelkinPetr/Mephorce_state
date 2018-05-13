@@ -111,6 +111,18 @@ body > .container {
     /* margin-top: 100px; */
     margin-bottom: 40px;
 }
+.project-page-block {
+    /* width: 400px; */
+    padding: 20px;
+    font-size: 16px;
+    background: #ffffff;
+    /* border: 1px solid #063971; */
+    border-radius: 5px;
+    border-top: 5px solid #063971;
+    /* margin: 0 auto; */
+    /* margin-top: 100px; */
+    margin-bottom: 40px;
+}
 
 .personal-page-block h1 {
     text-align: center;
@@ -120,6 +132,15 @@ body > .container {
     margin-top: 0;
     margin-bottom: 20px;
 }
+.project-page-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
 
 .info-block {
     width: 500px;

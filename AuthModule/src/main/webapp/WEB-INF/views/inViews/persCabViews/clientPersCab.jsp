@@ -13,7 +13,7 @@
 <html>
 
 <head>
-    <title> Personal Client Page </title>
+    <title> Персональная страница Заказчика </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -36,7 +36,7 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">MePhorce</a>
+        <a class="navbar-brand" href="/PCabinClient">MePhorce</a>
         <nav class="nav nav-masthead">
             <a class="nav-link" href="/PPersCabinClient"><span class="glyphicon glyphicon-user"> Профиль </span> </a>
             <a class="nav-link" href="/aboutUs"><span class="glyphicon glyphicon-info-sign"> О проекте</span> </a>
@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="col-md-9">
-        <h3>Личный кабинет Заказчика</h3>
+        <h3 id="lk-zakaz">Личный кабинет Заказчика</h3>
      <!--   <div class="container">
             <div class="personal-page-block">
                 <h1>
@@ -121,20 +121,19 @@
                                 <th class="text-center">Дата создания</th>
                                 <th class="text-center">Статус</th>
                                 <th class="text-center">Дата готовности</th>
-                                <th class="text-center">Сумма</th>
-                                <th class="text-center">Модератор</th>
+                   <!--             <th class="text-center">Сумма</th>
+                                <th class="text-center">Модератор</th>-->
                             </thead>
                             <tbody id="prodReportTable" >
                             <c:forEach var="listValue" items="${projectList}">
                                 <tr >
-                                    <td class="text-center"><a href="/goToProject?prId=${listValue.prId}">${listValue.prId}</a></td>
+                                    <td class="text-center"><a href="/goToProjectInfo?prId=${listValue.prId}">${listValue.prId}</a></td>
                                     <td class="text-center"><a href="/goToProject?prId=${listValue.prId}">${listValue.title}</a></td>
                                     <td class="text-center"><div class="table-responsive cell" >${listValue.description}</div></td>
                                     <td class="text-center">${listValue.dateOfCreation}</td>
                                     <td class="text-center">${listValue.status}</td>
                                     <td class="text-center">${listValue.dateOfReady}</td>
-                                    <td class="text-center">${listValue.sum}</td>
-                                    <td class="text-center">${moderator.modFamily} ${moderator.modFirstName} ${moderator.modSecName}</td>
+
                                 </tr>
                             </c:forEach>
                             </tbody>

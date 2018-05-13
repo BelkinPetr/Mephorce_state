@@ -10,31 +10,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Приглашение модераторов</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <style type="text/css">
-        <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/cssforpr.css" %>
-        <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" %>
-        <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/table-style.css" %>
-    </style>
-
-    <script>
-
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" >
-
-    </script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
+        <title>Приглашение модераторов</title>
+        <style type="text/css">
+            <%@include file="/WEB-INF/css/bootstrap-4.0.0-alpha.6-dist/css/cssforpr.css" %>
+            <%@include file="/WEB-INF/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" %>
+            <%@include file="/WEB-INF/css/zabuto_calendar.min.css" %>
+        </style>
+        <script src="../../js/vendor/jquery-3.2.1.min.js">
+        </script>
+        <script src="../../js/vendor/jquery.maskedinput.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ru.js"></script>
+        <script src="WEB-INF/js/vendor/zabuto_calendar.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">MePhorce</a>
+        <a class="navbar-brand" href="/PCabinClient">MePhorce</a>
         <nav class="nav nav-masthead">
             <a class="nav-link" href="/">Войти</a>
             <a class="nav-link" href="/aboutUs">О проекте</a>
@@ -46,8 +39,8 @@
 
 
 <div class="container">
-    <div class="login-block" id="vasya">
-        <h1> Приглашение модераторов </h1>
+    <div class="сreate-project-block" id="inviting-moders">
+        <h3> Приглашение модераторов </h3>
         </br>
         <form name="form1"  method="post">
        <div class="table-responsive">
@@ -58,7 +51,7 @@
                    <th class="text-center">Решение</th>
                </tr>
                </thead>
-               <tbody >
+               <tbody id="prodReportTable" >
                <c:forEach var="listValue" items="${potentialList}">
                    <tr >
                        <td class="text-center"><a href="/getClientAdmin?modId=${listValue.modId}&prId=${project}">${listValue.modFamily} ${listValue.modFirstName} ${listValue.modSecName}</a></td>
