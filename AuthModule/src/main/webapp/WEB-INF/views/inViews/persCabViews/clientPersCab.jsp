@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
   Created by IntelliJ IDEA.
@@ -49,7 +50,7 @@
                 </ul>
             </li>-->
             <a class="nav-link" href="/contacts"><span class="glyphicon glyphicon-comment"> Контакты</span></a>
-            <a class="nav-link active" href="/"><span class="glyphicon glyphicon-log-out"> ${Client.clFamily} </span></a>
+            <a class="nav-link active" href="/"><span id="replace" class="glyphicon glyphicon-log-out">  </span></a>
         </nav>
     </div>
 </nav>
@@ -71,7 +72,7 @@
         </div>
     </div>
     <div class="col-md-9">
-        <h3 id="lk-zakaz">Личный кабинет Заказчика</h3>
+        <h3 id="lk-zakaz" align="center">Личный кабинет Заказчика</h3>
      <!--   <div class="container">
             <div class="personal-page-block">
                 <h1>
@@ -128,12 +129,13 @@
                             <c:forEach var="listValue" items="${projectList}">
                                 <tr >
                                     <td class="text-center"><a href="/goToProjectInfo?prId=${listValue.prId}">${listValue.prId}</a></td>
-                                    <td class="text-center"><a href="/goToProject?prId=${listValue.prId}">${listValue.title}</a></td>
+                                    <td class="text-center"><a href="/goToProjectInfo?prId=${listValue.prId}">${listValue.title}</a></td>
                                     <td class="text-center"><div class="table-responsive cell" >${listValue.description}</div></td>
-                                    <td class="text-center">${listValue.dateOfCreation}</td>
+                                    <td class="text-center"><c:set var = "date" value="${listValue.dateOfCreation}" />
+                                        <fmt:formatDate type = "date" value = "${date}"/></td>
+                                    <td class="text-center"><c:set var = "date2" value="${listValue.dateOfReady}" />
+                                        <fmt:formatDate type = "date" value = "${date2}"/></td>
                                     <td class="text-center">${listValue.status}</td>
-                                    <td class="text-center">${listValue.dateOfReady}</td>
-
                                 </tr>
                             </c:forEach>
                             </tbody>

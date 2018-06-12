@@ -1,5 +1,7 @@
 package Controller;
 
+import DAOImplement.ClientsDao;
+import DAOImplement.ProjectDao;
 import HibernateEntities.ClientsEntity;
 import HibernateEntities.ModeratorsEntity;
 import HibernateEntities.PhotosEntity;
@@ -29,9 +31,7 @@ import java.util.List;
 
 import static DAOImplement.ClientsDao.getClientProject;
 import static DAOImplement.ClientsDao.updateClient;
-import static DAOImplement.FileDao.createNewPhoto;
-import static DAOImplement.FileDao.getPhotoList;
-import static DAOImplement.FileDao.getPhotoListforClient;
+import static DAOImplement.FileDao.*;
 import static DAOImplement.ProjectDao.getAdminById;
 import static DAOImplement.ProjectDao.getProjectById;
 
@@ -142,6 +142,7 @@ public class ClientMovController {
             ModeratorsEntity moderator = getAdminById(project.getMdId());
             projectInfo.addObject("Project",project);
             projectInfo.addObject("Moder",moderator);
+            projectInfo.addObject("fileList", getFileList(project));
             return projectInfo;
         } catch (Exception ex) {
             logger.error(ex.getStackTrace());
@@ -219,5 +220,19 @@ public class ClientMovController {
 
     public boolean clientValidator(ClientsEntity client) {
         return client.getClientId() == null || client == null;
+    }
+    @RequestMapping(value = "/PFileClient")
+    public ModelAndView PFileAdmin(@ModelAttribute("Client") ClientsEntity client,
+                                   @RequestParam String prId) {
+        try {
+            ProjectsEntity project = ProjectDao.getProjectById(Integer.parseInt(prId));
+            ModelAndView clientFiles = new ModelAndView("FileViews/PageFileClient");
+            clientFiles.addObject("fileList", getFileList(project));
+            clientFiles.addObject("Client", client);
+            clientFiles.addObject("prId", Integer.parseInt(prId));
+            return clientFiles;
+        } catch (Exception ex) {
+            return new ModelAndView("otherViews/errorView");
+        }
     }
 }

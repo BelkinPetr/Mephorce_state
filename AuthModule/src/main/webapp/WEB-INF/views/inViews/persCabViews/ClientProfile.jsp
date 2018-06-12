@@ -116,7 +116,7 @@
                         <c:if test="${not empty Client.clEmail}">
                             <div class="m-b-10"><span class="info-label" style="font-weight: bold">E-mail:</span> ${Client.clEmail} </div>
                         </c:if>
-                        <div class="m-b-10"><span class="info-label" style="font-weight: bold">Статус:</span> Заказчик </div>
+                        <div class="m-b-10"><span class="info-label" style="font-weight: bold">Роль:</span> Заказчик </div>
                         <br><br>
                         <h3>Сведения об организации</h3>
                         <br>
@@ -146,13 +146,12 @@
                                 <th class="text-center">Описание</th>
                                 <th class="text-center">Статус</th>
                                 <th class="text-center">Дата готовности</th>
-                                <th class="text-center">Модератор</th>
                             </thead>
                             <tbody id="prodReportTable" >
                             <c:forEach var="listValue" items="${projectList}" varStatus="сounter">
                                 <tr >
-                                    <td class="text-center"><a href="/PmainWindowProjectAdmin?proj=${listValue.prId}">${сounter.count}</a></td>
-                                    <td class="text-center"><a href="/PmainWindowProjectAdmin?proj=${listValue.prId}">${listValue.title}</a></td>
+                                    <td class="text-center"><a href="/goToProjectInfo?proj=${listValue.prId}">${сounter.count}</a></td>
+                                    <td class="text-center"><a href="/goToProjectInfo?proj=${listValue.prId}">${listValue.title}</a></td>
                                     <td class="text-center"><div class="table-responsive cell" >${listValue.description}</div></td>
                                     <c:if test="${listValue.status == 'Есть просроченные задачи'}">
                                         <td class="text-center danger">
@@ -180,7 +179,6 @@
                                     </c:if>
                                     <td class="text-center"><c:set var = "date2" value="${listValue.dateOfReady}" />
                                         <fmt:formatDate type = "date" value = "${date2}" /></td>
-                                    <td class="text-center">${clientList.pollFirst()}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>

@@ -606,7 +606,7 @@ public class AdminMovController {
     }
     private static final org.slf4j.Logger logger1 = LoggerFactory.getLogger(AdminMovController.class);
 
-    @RequestMapping(value = "/uploadFil", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     @ResponseBody
     public String uploadFile(@RequestParam("file") MultipartFile file, @ModelAttribute("Admin") ModeratorsEntity admin,
                              @RequestParam("prID") String projId) {

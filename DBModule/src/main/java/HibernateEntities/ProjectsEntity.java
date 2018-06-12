@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "projects", schema = "anketa", catalog = "")
+@Table(name = "projects", schema = "anketa")
 public class ProjectsEntity {
     private int prId;
     private String title;
@@ -17,13 +17,25 @@ public class ProjectsEntity {
     private String sum;
     private String jsondata;
     private Integer clId;
-
-
     private Integer mdId;
-
     private Integer moneyDivision;
     private Integer personNumber;
-    private String worktypes;
+    private String work_list;
+    private int skillcatId;
+
+    public ProjectsEntity(){
+
+    }
+
+    public String getWork_list() {
+        return work_list;
+    }
+
+    public void setWork_list(String work_list) {
+        this.work_list = work_list;
+    }
+
+
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -144,10 +156,14 @@ public class ProjectsEntity {
     }
 
     @Basic
-    @Column(name = "worktypes")
-    public String getWorktypes(){ return  worktypes;}
-    public  void setWorktypes(String worktypes) {this.worktypes = worktypes;}
+    @Column(name = "work_list")
+    public String getWorklist(){ return  work_list;}
+    public  void setWorklist(String work_list) {this.work_list = work_list;}
 
+    @Basic
+    @Column(name = "skil_cat_id")
+    public Integer getSkillcatId(){return skillcatId;}
+    public void setSkillcatId(Integer skillcatId) {this.skillcatId = skillcatId;}
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -164,7 +180,7 @@ public class ProjectsEntity {
         if (dateOfReady != null ? !dateOfReady.equals(that.dateOfReady) : that.dateOfReady != null) return false;
         if (sum != null ? !sum.equals(that.sum) : that.sum != null) return false;
         if (jsondata != null ? !jsondata.equals(that.jsondata) : that.jsondata != null) return false;
-        if (worktypes != null ? !worktypes.equals(that.worktypes) : that.worktypes !=null) return false;
+        if (work_list != null ? !work_list.equals(that.work_list) : that.work_list !=null) return false;
 
 
         return true;
@@ -180,7 +196,7 @@ public class ProjectsEntity {
         result = 31 * result + (dateOfReady != null ? dateOfReady.hashCode() : 0);
         result = 31 * result + (sum != null ? sum.hashCode() : 0);
         result = 31 * result + (jsondata != null ? jsondata.hashCode() : 0);
-        result = 31 * result + (worktypes !=null ? worktypes.hashCode() : 0);
+        result = 31 * result + (work_list !=null ? work_list.hashCode() : 0);
         return result;
     }
 }

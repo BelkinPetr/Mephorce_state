@@ -49,6 +49,7 @@
         ${Client.clFamily} ${Client.clFirstName} ${Client.clSecName} </br>
         </br>
         <form:form method="post" modelAttribute="addInf" action="/addInformClient">
+          <form:input path=""
             <form:input path="birthdate" type="date" value="${Client.clBirthdate}" placeholder="Дата рождения" id="birthdate"/>${birthMessage}<br/>
             <form:input path="e_mail" type="email" value="${Client.clEmail}" placeholder="E-mail" id="email"/>${emailMessage}<br/>
             <form:input path="phone_number" type="text" value="${Client.clPhone}" placeholder="Номер телефона"/>${phoneMessage}<br/>

@@ -12,6 +12,16 @@ public class AddInfEnt {
     private String phone_number;
     private String company;
     private String position;
+    private String cl_family;
+
+    public String getCl_family() {
+        return cl_family;
+    }
+
+    public void setCl_family(String cl_family) {
+        this.cl_family = cl_family;
+    }
+
 
     public ArrayList<Integer> getSkillsId() {
         return skillsId;

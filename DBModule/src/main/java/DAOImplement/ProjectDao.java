@@ -21,7 +21,7 @@ public class ProjectDao {
         List<ProjectsEntity> res = query.list();
         HashMap<String, ProjectsEntity> projectsDict = new HashMap<>();
         for(ProjectsEntity cl: res){
-            projectsDict.put(cl.getWorktypes()+""+cl.getTitle()+" "+cl.getDescription()+" "+cl.getSum(),cl);
+            projectsDict.put(cl.getWorklist()+""+cl.getTitle()+" "+cl.getDescription()+" "+cl.getSum(),cl);
         }
         session.close();
         return projectsDict;
@@ -46,19 +46,46 @@ public class ProjectDao {
         session.close();
         return clientsList;
     }*/
+  /*public static HashMap<String, ModeratorsEntity> getProjectSkillCat() {
+      Session session = getSession();
+      Query query = session.createQuery("FROM SkillCatEntity Entity ");
+      List<ModeratorsEntity> res = query.list();
+      HashMap<String, ModeratorsEntity> adminsDict = new HashMap<>();
+      for (ModeratorsEntity ad : res) {
+          adminsDict.put(ad.getModFamily() + " " + ad.getModFirstName() + " " + ad.getModSecName(), ad);
+      }
+      session.close();
+      return adminsDict;
+  }*/
     public static  void createNewProject(ProjectsEntity projectsEntity){
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("Select max(prId) FROM ProjectsEntity");
         Integer res = (Integer)query.uniqueResult();
         projectsEntity.setPrId(res.intValue() + 1);
         projectsEntity.setStatus("опубликован");
+        projectsEntity.setSkillcatId(0);
+       // projectSkillCatEntity.setSkilCatId(0);
         session.beginTransaction();
         session.save(projectsEntity);
         session.getTransaction().commit();
         session.close();
     }
+    public static  void createNewProjectskill(ProjectSkillCatEntity projectSkillCatEntity,ProjectsEntity projectsEntity){
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("Select max(prId) FROM ProjectSkillCatEntity ");
+        Integer res = (Integer)query.uniqueResult();
+        projectSkillCatEntity.setPrId(projectsEntity.getPrId());
+      //  projectSkillCatEntity.setSkilCatId(0);
+        projectSkillCatEntity.setPcsId(String.valueOf(projectSkillCatEntity.getPrId()));
+       // projectSkillCatEntity.setSkilCatId(0);
+        session.beginTransaction();
+        session.save(projectSkillCatEntity);
+        session.getTransaction().commit();
+        session.close();
+    }
     public static void updateProject1(ProjectsEntity projectsEntity) {
-        Session session = getSession();
+        Session session = HibernateUtil.getSession();
+        //projectsEntity.setStatus(projectsEntity.getStatus());
         session.beginTransaction();
         session.update(projectsEntity);
         session.getTransaction().commit();
@@ -148,7 +175,7 @@ public class ProjectDao {
     }
 
     public static void saveInvite(Integer prId, Integer modId, Integer status){
-        try(Session session = getSession()){
+        try(Session session = HibernateUtil.getSession()){
             InvitationEntityClient invite = new InvitationEntityClient();
             invite.setPrId(prId);
             invite.setModId(modId);

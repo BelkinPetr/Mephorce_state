@@ -1,25 +1,33 @@
 package Controller;
 
 import DAOImplement.ProjectDao;
-import HibernateEntities.ClientsEntity;
-import HibernateEntities.MdPrEntity;
-import HibernateEntities.ModeratorsEntity;
-import HibernateEntities.ProjectsEntity;
+import HibernateEntities.*;
 import ServiceEntites.AddProject;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static DAOImplement.AdminDao.getListofProjects;
 import static DAOImplement.AdminDao.getProjectById;
 import static DAOImplement.AdminDao.updateProject;
+import static DAOImplement.FileDao.createNewFile;
 import static DAOImplement.ProjectDao.*;
 
-/**
- * Created by postgres on 03.04.2017.
- */
 @Controller
 @SessionAttributes("Client")
 public class ProjectMovController {
@@ -66,13 +74,17 @@ public class ProjectMovController {
                 mvCrProject.addObject("DateOfCreation", "Это поле обязательно для заполнения");
                 errors = true;
             }
-            if (addProject.getClworktypes().trim().equals("")) {
-                mvCrProject.addObject("WorkTypes", "Это поле обязательно для заполнения");
+            if (addProject.getClworkList().trim().equals("")) {
+                mvCrProject.addObject("WorkList", "Это поле обязательно для заполнения");
                 errors = true;
             }
+         /*   if (addProject.getClSkillCatId().equals("")){
+                mvCrProject.addObject("SkillCatId","Это поле обязательно для заполнения");
+            }*/
             if (errors) {
                 return mvCrProject;
             } else {
+              //  ProjectSkillCatEntity projectSkillCatEntity =new ProjectSkillCatEntity();
                 ProjectsEntity projectsEntity = new ProjectsEntity();
                 projectsEntity.setTitle(addProject.getCltitle().trim());
                 projectsEntity.setDescription(addProject.getCldescription().trim());
@@ -81,8 +93,13 @@ public class ProjectMovController {
                 projectsEntity.setDateOfCreation(addProject.getCldateOfCreation());
                 projectsEntity.setDateOfReady(addProject.getCldateOfReady());
                 projectsEntity.setSum(addProject.getClsum());
-                projectsEntity.setWorktypes(addProject.getClworktypes());
+                projectsEntity.setWorklist(addProject.getClworkList());
+//                projectsEntity.setSkillcatId(addProject.getClSkillCatId());
                 createNewProject(projectsEntity);
+                ProjectSkillCatEntity projectSkillCatEntity=new ProjectSkillCatEntity();
+                projectSkillCatEntity.setSkilCatId(projectsEntity.getSkillcatId());
+
+                createNewProjectskill(projectSkillCatEntity,projectsEntity);
                 return new ModelAndView("redirect:/PCabinClient");
             }
         } catch (Exception ex) {
@@ -124,18 +141,19 @@ public class ProjectMovController {
 
     @RequestMapping(value = "/addInformProjectNew")
     public ModelAndView updateClientInformation(@ModelAttribute("addInfo") AddProject addInf,
-                                                @RequestParam String prId) {
+                                                @RequestParam String prId, RedirectAttributes redirectAttributes) {
         try {
             ProjectsEntity projectsEntity = getProjectById(Integer.parseInt(prId));
             projectsEntity.setTitle(addInf.getCltitle().trim());
             projectsEntity.setDescription(addInf.getCldescription().trim());
             projectsEntity.setDateOfCreation(addInf.getCldateOfCreation());
-            projectsEntity.setStatus(addInf.getClstatus().trim());
+          //  projectsEntity.setStatus(addInf.getClstatus().trim());
             projectsEntity.setSum(addInf.getClsum());
             projectsEntity.setDateOfReady(addInf.getCldateOfReady());
-            projectsEntity.setWorktypes(addInf.getClworktypes());
+            projectsEntity.setWorklist(addInf.getClworkList());
             updateProject1(projectsEntity);
-            return new ModelAndView("redirect:/PCabinClient");
+            redirectAttributes.addAttribute("prId",prId);
+            return new ModelAndView("redirect:/goToProjectInfo");
         } catch (Exception ex) {
             return new ModelAndView("otherViews/errorView");
         }
@@ -233,4 +251,86 @@ public class ProjectMovController {
        // addModeratorToProject(Integer.parseInt(prId), Integer.parseInt(CLId));
         //return new ModelAndView("redirect:/PClientInvitation?proj="+prId);
     //}
+    private static final org.slf4j.Logger logger1 = LoggerFactory.getLogger(ClientMovController.class);
+    @RequestMapping(value = "/uploadFileforProject", method = RequestMethod.POST)
+    @ResponseBody
+    public String uploadFileforProject(@RequestParam("file") MultipartFile file, @ModelAttribute("Client") ClientsEntity client,
+                             @RequestParam("prId") String prId) {
+        String name = null;
+
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+
+                name = file.getOriginalFilename();
+                String rootPath = "/server/file_storage/files";
+                //String rootPath = "\\mephorce-dev\\";  //try also "C:\path\"
+                File dir = new File(rootPath + File.separator + "loadFiles"+ prId);
+
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                File uploadedFile = new File(dir.getAbsolutePath() + File.separator + name);
+
+
+                if (uploadedFile.exists()) {
+
+                    return "<script language='javascript'> alert('\\u0424\\u0430\\u0439\\u043B\\u0020\\u0443\\u0436\\u0435\\u0020\\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442\\u0021'); window.location.href = '/PFileClient?prId=" + prId + "'; </script>";
+                } else {
+
+                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(uploadedFile));
+                    stream.write(bytes);
+                    stream.flush();
+                    stream.close();
+
+                    logger1.info("uploaded: " + uploadedFile.getAbsolutePath());
+
+
+                    FilesEntity fileen = new FilesEntity();
+                    fileen.setFile_name(name);
+                    fileen.setFile_path((dir.getAbsolutePath() + "\\" + name));
+                    try {
+                        if (client != null) {
+                            fileen.setClId(client.getClientId());
+                            fileen.setModId(-1);
+                            fileen.setStId(-1);
+                            fileen.setPrId((Integer.parseInt(prId)));
+                        }
+                    } catch (Exception e) {
+                    }
+
+                    createNewFile(fileen);
+                    return "<script language='javascript'> alert('\\u0424\\u0430\\u0439\\u043B\\u0020\\u0443\\u0441\\u043F\\u0435\\u0448\\u043D\\u043E\\u0020\\u0437\\u0430\\u0433\\u0440\\u0443\\u0436\\u0435\\u043D'); window.location.href = '/PFileClient?prId=" + prId + "'; </script>";
+
+                }
+            } catch (Exception e) {
+                return "<script language='javascript'> alert('\\u0424\\u0430\\u0439\\u043B\\u0020\\u043D\\u0435\\u0020\\u0437\\u0430\\u0433\\u0440\\u0443\\u0436\\u0435\\u043D\\u0021'); window.location.href = '/PFileClient?prId=" + prId + "'; </script>";
+            }
+        } else {
+            return "<script language='javascript'> alert('\\u0424\\u0430\\u0439\\u043B\\u0020\\u043D\\u0435\\u0020\\u0437\\u0430\\u0433\\u0440\\u0443\\u0436\\u0435\\u043D\\u0021'); window.location.href = '/PFileClient?prId=" + prId + "'; </script>";
+        }
+
+    }
+    @RequestMapping(value = "/download")
+
+    public void download(@RequestParam String fileName,
+                         HttpServletRequest request,
+                         HttpServletResponse response) {
+        //If user is not authorized - he should be thrown out from here itself
+
+        //Authorized user will download the file
+
+        Path file = Paths.get(fileName);
+        if (Files.exists(file)) {
+            response.setContentType("application/loadFiles");
+            response.addHeader("Content-Disposition", "attachment; filename=" + fileName);
+            try {
+                Files.copy(file, response.getOutputStream());
+                response.getOutputStream().flush();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

@@ -367,7 +367,7 @@ public class StudentMovController {
     }
     private static final org.slf4j.Logger logger1 = LoggerFactory.getLogger(AdminMovController.class);
 
-    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    @RequestMapping(value = "/uploadFil", method = RequestMethod.POST)
     @ResponseBody
     public String uploadFileStudent (@RequestParam("file") MultipartFile file, @ModelAttribute("Student") StudentsEntity student,
                                      @RequestParam("prID") String prId) {

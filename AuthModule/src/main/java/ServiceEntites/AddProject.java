@@ -2,11 +2,10 @@ package ServiceEntites;
 
 import HibernateEntities.ProjectsEntity;
 
+import javax.swing.event.InternalFrameAdapter;
 import java.sql.Date;
 
-/**
- * Created by postgres on 23.03.2017.
- */
+
 public class AddProject {
     private int clprId;
     private String cltitle;
@@ -20,7 +19,8 @@ public class AddProject {
     private Integer clmdId;
     private Integer clmoneyDivision;
     private Integer clpersonNumber;
-    private String clworktypes;
+    private int clskillcatId;
+    private String clworkList;
 
     public AddProject(ProjectsEntity project){
         this.cldateOfCreation = project.getDateOfCreation();
@@ -35,7 +35,8 @@ public class AddProject {
         this.clmdId = project.getMdId();
         this.clmoneyDivision=project.getMoneyDivision();
         this.clpersonNumber=project.getPersonNumber();
-        this.clworktypes=project.getWorktypes();
+        this.clworkList=project.getWorklist();
+        this.clskillcatId=project.getSkillcatId();
 
     }
 
@@ -112,9 +113,17 @@ public class AddProject {
     public void setClclId(Integer clclId) {
         this.clclId = clclId;
     }
-    public String getClworktypes(){ return clworktypes;}
-    public void  setClworktypes(String clworktypes){this.clworktypes = clworktypes;}
+        public Integer getClSkillCatId(){return clskillcatId;}
+    public void setClSkillCatId(int clskillcatId){this.clskillcatId=clskillcatId;}
 
+
+    public void setClworkList(String clworkList) {
+        this.clworkList = clworkList;
+    }
+
+    public String getClworkList() {
+        return clworkList;
+    }
 }
 
 

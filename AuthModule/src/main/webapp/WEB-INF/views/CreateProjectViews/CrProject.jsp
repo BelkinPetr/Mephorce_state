@@ -5,6 +5,8 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Создание проекта</title>
     <style type="text/css">
         <%@include file="/WEB-INF/css/bootstrap-4.0.0-alpha.6-dist/css/cssforpr.css" %>
@@ -25,7 +27,7 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">MePhorce</a>
+        <a class="navbar-brand" href="/PCabinClient">MePhorce</a>
         <nav class="nav nav-masthead">
             <a class="nav-link" href="/PPersCabinClient"><span class="glyphicon glyphicon-user"> Профиль </span> </a>
             <a class="nav-link" href="/aboutUs"><span class="glyphicon glyphicon-info-sign"> О проекте</span> </a>
@@ -57,10 +59,16 @@
             <form:label path="cldescription"><div style="font-weight: bold">Бюджет проекта:<span class="required" style="color: #710009">*</span></div></form:label>
             <form:input path="clsum" type="text" value="" placeholder="Введите сумму по проекту"/>${Sum}   <br/>
             <form:label path="cldescription"><div style="font-weight: bold">Планируемый перечень работ:<span class="required" style="color: #710009">*</span></div></form:label>
-            <form:textarea path="clworktypes" type="text" value="" placeholder=""/> ${WorkTypes}   <br/>
+            <form:textarea path="clworkList" type="text" value="" placeholder=""/> ${WorkList}   <br/>
             ${errMessage}<br/>
             <form:button>Создать</form:button>
         </form:form>
+        <a href="/PCabinClient" class="btn btn-primary" style="background: #063971">
+            <span class="glyphicon glyphicon-arrow-left">
+
+            </span>
+            Назад в личный кабинет
+        </a>
         <script>
             $(function () {
                 // идентификатор элемента (например: #datetimepicker1), для которого необходимо инициализировать виджет Bootstrap DateTimePicker

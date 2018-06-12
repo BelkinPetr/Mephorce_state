@@ -33,19 +33,20 @@
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="/">MePhorce</a>
+        <a class="navbar-brand" href="/PCabinClient">MePhorce</a>
         <nav class="nav nav-masthead">
-            <a class="nav-link" href="/aboutUs">О проекте</a>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Создать аккаунт</a>
-                <ul class="dropdown-menu inverse">
-                    <li><a href="regStudent">Исполнитель</a></li>
-                    <li><a href="regAdmin">Администратор</a></li>
-                    <li><a href="regClient">Заказчик</a></li>
-                </ul>
-            </li>
-            <a class="nav-link" href="/contacts">Контакты</a>
-            <a class="nav-link active" href="/">Выйти</a>
+            <a class="nav-link" href="/PPersCabinClient"><span class="glyphicon glyphicon-user"> Профиль </span> </a>
+            <a class="nav-link" href="/aboutUs"><span class="glyphicon glyphicon-info-sign"> О проекте</span> </a>
+            <!--  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Создать аккаунт</a>
+                  <ul class="dropdown-menu inverse">
+                      <li><a href="regStudent">Исполнитель</a></li>
+                      <li><a href="regAdmin">Администратор</a></li>
+                      <li><a href="regClient">Заказчик</a></li>
+                  </ul>
+              </li>-->
+            <a class="nav-link" href="/contacts"><span class="glyphicon glyphicon-comment"> Контакты</span></a>
+            <a class="nav-link active" href="/"><span id="replace" class="glyphicon glyphicon-log-out">  </span></a>
         </nav>
     </div>
 </nav>
@@ -64,18 +65,18 @@
             <div class="btn-group btn-group-vertical">
                 <form>
                     <div class="sidebar-header alert alert-info ">Меню</div>
-                    <li class=""> <a href="/PPersCabinClient">Мои проекты</a></li>
-                    <li class=""><a href="#">Чат с модератором</a> </li>
-                    <li class=""><a href="/PCabinClient">Профиль</a> </li>
-                    <li class=""><a href="#">Сообщество</a> </li>
-                    <li class=""><a href="/PClientInvitation?prId=${project.prId}">Новое приглашение</a></li>
-                    <li class=""><a href="/">Выход</a> </li>
+                    <!--  <li class=""> <a href="/PPersCabinClient">Мои проекты</a></li>-->
+                    <li class=""><a href="#"><span class="glyphicon glyphicon-comment"> Чат с модератором </span> </a> </li>
+                    <li class=""><a href="/goToProjectAppender"><span class="glyphicon glyphicon-plus"> Новый проект </span></a> </li>
+                    <!--<li class=""><a href="/PCabinClient">Профиль</a> </li>-->
+                    <li class=""><a href="/community/?role=client"><span class="glyphicon glyphicon-question-sign"> Сообщество </span> </a> </li>
+                    <li class=""><a href="/PClientInvitation?prId=${project.prId}"><span class="glyphicon glyphicon-share"> Новое приглашение</span></a></li>
                 </form>
             </div>
         </div>
     </div>
     <div class="col-md-9">
-        <h5>Мои приглашения в проекты</h5>
+        <h3>Мои приглашения в проекты</h3>
         <div class="table-responsive">
             <table class="table table-striped tablesorter"  id="myTable" >
                 <thead>

@@ -7,6 +7,7 @@
     <class name="HibernateEntities.ProjectsEntity" table="projects" schema="anketa">
         <id name="prId">
             <column name="pr_id" sql-type="int(11)"/>
+            <generator class="increment"/>
         </id>
         <property name="title">
             <column name="title"/>
@@ -40,6 +41,12 @@
         </property>
         <property name="personNumber">
             <column name="personNumber"/>
+        </property>
+        <property name="work_list">
+            <column name="work_list"/>
+        </property>
+        <property name="skillcatId">
+            <column name="skil_cat_id"/>
         </property>
     </class>
 </hibernate-mapping>
